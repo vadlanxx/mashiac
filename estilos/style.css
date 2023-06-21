@@ -1,0 +1,49 @@
+*> {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+body{
+    background-image: linear-gradient(to bottom, rgb(4, 0, 255), rgb(132, 0, 255));
+}
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+h1 {
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+li:hover {
+    background-color: rgba(140, 0, 255, 0.253);
+
+}
+
+.botones {
+    width: 100px;
+    flex: 0 0 33.33%;
+    padding: 10px;
+}
+
+.imagenes {
+    display: flex;
+    flex-wrap: wrap;
+}
+.botones button {
+    width: 50%;
+}
+.botones img {
+    width: 80%;
+    height: auto;
+}

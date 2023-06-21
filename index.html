@@ -1,14 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="./estilos/style.css">
 </head>
+
 <body>
+    <header>
+        <h1>Arma tu mejor equipo</h1>
+    </header>
+    <Main>
+        <section>
+            <h2>Elije el mapa</h2>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Selecciona un mapa</option>
+                <option value="1">Ascent</option>
+                <option value="2">Split</option>
+                <option value="3">Lotus</option>
+            </select>
+        </section>
+        <section>
+            <h2>Personajes</h2>
+            <div class="imagenes">
+                <div class="botones">
+                    <button class="boton" id="btnAgregarBreach" type="button">
+                        <img onclick="agregar(breach)" src="./img/breach.jpg" alt="brach">
+                    </button>
+                </div>
+                <div class="botones">
+                    <button class="boton" id="btnAgregarBrimstone" type="button" >
+                        <img onclick="agregar(brimstone)" src="./img/brimstone.jpg" alt="brimstone">
+
+                    </button>
+                </div>
+                <div class="botones">
+                    <button class="boton" id="btnAgregarJett" type="button">
+                        <img onclick="agregar(jett)" src="./img/jett.jpg" alt="jett">
+                    </button>
+                </div>
+                <div class="botones">
+                    <button class="boton"  id="btnAgregarKilljoy" type="button">
+                        <img onclick="agregar(killjoy)" src="./img/killjoy.jpg" alt="killjoy">
+                    </button>
+                </div>
+                <div class="botones">
+                    <button class="boton" id="btnAgregarPhoenix" type="button">
+                        <img onclick="agregar(phoenix)" src="./img/phoenix.jpg" alt="phoenix">
+                    </button>
+                </div>
+            </div>
+
+        </section>
+        <section>
+            <h3>EQUIPO ATACANTE</h3>
+            <div id="equipoAtacante"></div>
+            <!-- aca va a ir el equipo -->
+        </section>
+    </Main>
     <script src="JS/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
-
-
