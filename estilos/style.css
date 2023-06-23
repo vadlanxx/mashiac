@@ -6,44 +6,94 @@
 }
 
 body{
-    background-image: linear-gradient(to bottom, rgb(4, 0, 255), rgb(132, 0, 255));
+    background-image: url(/img/alamcen.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-a {
-    text-decoration: none;
-    color: blue;
-}
-
-h1 {
+.titulo{
     text-align: center;
-}
-
-ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: black;
+    text-shadow: 0px 2px 4px rgba(247, 12, 12, 0.815);
+    color: rgb(226, 43, 43);
     padding: 2rem;
 }
-
-li:hover {
-    background-color: rgba(140, 0, 255, 0.253);
-
+h2{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color:rgb(0, 0, 0);
+    text-shadow: 0px 2px 4px rgba(32, 18, 18, 0.815);
+    width: fit-content;
+    padding: 1rem;
 }
-
-.botones {
+.inicio{
+    background-image: linear-gradient(to left, black, rgb(255, 81, 0));
+    display: flex;
+    justify-content: space-around;
+}
+.moneda{
     width: 100px;
-    flex: 0 0 33.33%;
-    padding: 10px;
+}
+.bayas{
+    padding: 1rem;
+    background-color: transparent;
 }
 
-.imagenes {
+.img{
+    width: 100px;
+}
+.imgg{
+    width: 200px;
+    background-color: aqua;
+}
+button{
+    background-color: transparent;
+    border-color: rgba(255, 115, 0, 0.644);
+    padding: 1rem;
+}
+.imagenes{
+    display: flex;
+    padding: 1rem;
+    justify-content: space-evenly;
+    gap: 1rem;
+    background-color: black;
+    width: auto;
+}
+h1{
+    background-color: black;
+    color: orange;
+    height: auto;
+}
+
+.coints{
+    display: flex;
+}
+
+/* me devuelve */
+.ventana{
+    width: 30%;
+    text-align: center;
+    margin-top: 1rem;
+    background-image: linear-gradient(to top, rgba(255, 115, 0, 0.295), black );
+    color: rgb(226, 230, 14);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.inventario{
+    width: 30%;
     display: flex;
     flex-wrap: wrap;
+    background-color: rgba(255, 115, 0, 0.295);
+    height: 250px;
+    padding: 1rem;
+    gap: 3px;
+    
 }
-.botones button {
-    width: 50%;
+
+/* EN JS */
+.producto{
+    background-color: transparent;
+    width: 100px;
 }
-.botones img {
-    width: 80%;
-    height: auto;
+.imgg{
+    width: 100px;
+    background-color: rgb(255, 60, 0);
 }

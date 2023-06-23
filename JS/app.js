@@ -69,67 +69,78 @@ if (comando == 'Enviar mensaje') {
 
 
 // Clase molde para los personajes 
-class pj {
-    constructor(nombre, rol, imagen) {
+class Productos {
+    constructor(nombre, precio, imagen) {
         this.nombre = nombre;
-        this.rol = rol;
+        this.precio = precio;
         this.imagen = imagen;
     }
 }
-//Variables globales 
-const equipoAtacante = [];
 
-//peronajes
-const killjoy = new pj("Killjoy", "Centinela");
-const jett = new pj("Jett", "Duelista");
-const phoenix = new pj("Phoenix", "Duelista");
-const brimstone = new pj("Brimstone", "Controlador");
-const breach = new pj("Breach", "Iniciador");
+// mochila es el aray 
+const mochila = [];
 
-// personajes disponibles 
-const peronajesDisponibles = [killjoy, jett, phoenix, brimstone, breach]
 
-//equipo
-let equipo = 0;
 
-//elementos
-const elementoEquipoAtacante = document.querySelector("#equipoAtacante");
-elementoEquipoAtacante.innerText = equipo;
+const naranja = new Productos("Naranja", 40, "fruta.png");
+const hacha = new Productos("Hacha", 300, "herramienta.png");
+const red = new Productos("Red", 500, "red2.png");
 
-const btnAgregarBreach = document.querySelector ("#btnAgregarBreach")
-const btnAgregarBrimstone = document.querySelector ("btnAgregarBrimstone")
-const btnAgregarJett = document.querySelector ("btnAgregarJett")
-const btnAgregarKilljoy = document.querySelector ("btnAgregarKilljoy")
-const btnAgregarPhoenix = document.querySelector ("btnAgregarPhoenix")
+const productoVendedor = [naranja, hacha, red];
+let bayas = 1000;
 
-// Recorro todos los botones
+ //elementos los voy a conectas con el html
+const elementoBayas = document.querySelector("#bayas span");
+const elementoMochila = document.querySelector("#mochila");
+elementoBayas.innerText = bayas;
+//botones usar uno por uno o con una class
+const btnComprarPocion = document.querySelector("#btnComprarNaranja");
+const btnComprarEspada = document.querySelector("#btnComprarHacha");
+const btnComprarEscudo = document.querySelector("#btnComprarRed");
+const botones = document.querySelectorAll(".boton");
+
+
+//funciones 
+
+//para los botones
 for (const boton of botones) {
     boton.addEventListener("click", function (event) {
-    let = peronajesDisponibles.find((item) => item.nombre == boton.innerText);
+        let producto = productoVendedor.find((producto) => producto.nombre === boton.id);
+        comprar(producto);
     });
 }
-
-
-
-//funciones regulares 
-function agregar(personaje) {
-    equipoAtacante.push(personaje);
+//agregar
+function comprar(producto) {
+    if ( bayas - producto.precio <= 0) {
+        alert("Todavia no posees las bayas necesarias para comprar una " + producto.nombre + ".");
+    } else if (mochila.length > 5) {
+        alert("Tienes mucho peso en tu mochila, deja algunas cosas y vuelve");
+    } else {
+        mochila.push(producto);
+        bayas -= producto.precio;
+        actualizarHTML();
+    }
+}
+//quitar
+function vender(indice) {
+    const producto = mochila[indice];
+    bayas += producto.precio;
+    mochila.splice(indice, 1);
     actualizarHTML();
 }
-// reinderizar html
+// para renderizar
 function actualizarHTML() {
-    elementoEquipoAtacante.innerHTML = '';
-    // Actualizar HTML del equipo atacante
-    equipoAtacante.forEach((personaje) => {
-        const elementoDiv = document.createElement('div');
-        elementoDiv.innerHTML = `
-        <div class="personaje">
-        <img src="./${personaje.imagen}"/>
-        <h3>${personaje.nombre}</h3>
-        <p>Rol: ${personaje.rol}</p>
-        </div>
-    `;
-        elementoEquipoAtacante.appendChild(elementoDiv);
-    });
+    elementoMochila.innerHTML = "";
+    for (const producto of mochila) {
+        let indiceProductos = mochila.indexOf(producto);
+        let elementoProductos = `
+        <li class="producto" onclick="vender(${indiceProductos})">
+            <img class="imgg" src="img/${producto.imagen}" />
+        </li>`;
+        elementoMochila.innerHTML += elementoProductos;
+    }
+    elementoBayas.innerText = bayas;
 }
+
+
 
