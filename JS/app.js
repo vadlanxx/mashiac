@@ -153,18 +153,6 @@ function actualizarHTML() {
 //************************ TERCERA PRE ENTREGA ********************************
 //************************ TERCERA PRE ENTREGA ********************************
 
-
-/*
-Objetivos de la tercer pre-entrega:
-- Usar el DOM ✅
-- Usar eventos ✅
-- Usar storage ✅
-- (Modo PRO) Simular una base de datos ✅
-- (Modo DIOS) Hacer un buscador ✅
-*/
-
-// Esta clase va a simular una base de datos. Vamos a cargar todos los productos
-// de nuestro e-commerce.
 class BaseDeDatos {
     constructor() {
         // array bd
