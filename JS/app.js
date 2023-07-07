@@ -66,9 +66,12 @@ if (comando == 'Enviar mensaje') {
 */
 
 //************************ SEGUNDA PRE ENTREGA ********************************
-
+//************************ SEGUNDA PRE ENTREGA ********************************
+//************************ SEGUNDA PRE ENTREGA ********************************
+//************************ SEGUNDA PRE ENTREGA ********************************
 
 // Clase molde para los personajes 
+/*
 class Productos {
     constructor(nombre, precio, imagen) {
         this.nombre = nombre;
@@ -78,6 +81,7 @@ class Productos {
 }
 
 // mochila es el aray 
+
 const mochila = [];
 
 
@@ -141,6 +145,183 @@ function actualizarHTML() {
     }
     elementoBayas.innerText = bayas;
 }
+*/
 
 
+//************************ TERCERA PRE ENTREGA ********************************
+//************************ TERCERA PRE ENTREGA ********************************
+//************************ TERCERA PRE ENTREGA ********************************
+//************************ TERCERA PRE ENTREGA ********************************
 
+
+/*
+Objetivos de la tercer pre-entrega:
+- Usar el DOM ✅
+- Usar eventos ✅
+- Usar storage ✅
+- (Modo PRO) Simular una base de datos ✅
+- (Modo DIOS) Hacer un buscador ✅
+*/
+
+// Esta clase va a simular una base de datos. Vamos a cargar todos los productos
+// de nuestro e-commerce.
+class BaseDeDatos {
+    constructor() {
+        // array bd
+        this.zapatillas = [];
+        //cargo los productos
+        this.agregarRegistro(1, "Calzado", 23000, "Zapatillas", "calzado.webp");
+        this.agregarRegistro(2, "Zapatillas", 30000, "Zapatillas", "zapatillas.webp");
+        this.agregarRegistro(3, "Bambas", 40500, "Zapatillas", "bambas.webp");
+        this.agregarRegistro(4, "Zapas", 25000, "Zapatillas", "zapas.webp");
+    }
+
+    // para los array
+    agregarRegistro(id, nombre, precio, categoria, imagen) {
+        const zapatilla = new Prenda(id, nombre, precio, categoria, imagen);
+        this.zapatillas.push(zapatilla);
+    }
+    traerRegistros() {
+        return this.zapatillas;
+    }
+    registroPorId(id) {
+        return this.zapatillas.find((zapatilla) => zapatilla.id === id);
+    }
+    registrosPorNombre(buscando) {
+        return this.zapatillas.filter((zapatilla) => zapatilla.nombre.toLowerCase().includes(buscando));
+    }
+}
+
+// controlar las zapatillas del carrito
+class Carrito {
+    constructor() {
+        const carritoStorage = JSON.parse(localStorage.getItem("carrito"));
+        this.carrito = carritoStorage || [];
+        this.total = 0;
+        this.totalZapatillas = 0;
+        this.listar();
+    }
+    enCarrito({ id }) {
+        return this.carrito.find((zapatilla) => zapatilla.id === id);
+    }
+
+    // agregar zapas 
+    agregar(zapatilla) {
+        const zapatillaEnCarrito = this.enCarrito(zapatilla);
+        if (zapatillaEnCarrito) {
+            zapatillaEnCarrito.cantidad++;
+        } else {
+            this.carrito.push({ ...zapatilla, cantidad: 1 });
+        }
+        localStorage.setItem("carrito", JSON.stringify(this.carrito));
+        this.listar();
+    }
+
+    // restar un par de zapatillas
+    sacar(id) {
+        const indice = this.carrito.findIndex((zapatilla) => zapatilla.id === id);
+        if (this.carrito[indice].cantidad > 1) {
+            this.carrito[indice].cantidad--;
+        } else {
+            this.carrito.splice(indice, 1);
+        }
+        localStorage.setItem("carrito", JSON.stringify(this.carrito));
+        this.listar();
+    }
+
+    // Actualiza el html del carrito
+    listar() {
+        this.total = 0;
+        this.totalZapatillas = 0;
+        divCarrito.innerHTML = "";
+        for (const zapatilla of this.carrito) {
+            divCarrito.innerHTML += `
+            <div class="zapatillaCarrito">
+                <h2>${zapatilla.nombre}</h2>
+                <p>$${zapatilla.precio}</p>
+                <p>Cantidad: ${zapatilla.cantidad}</p>
+                <a href="#" data-id="${zapatilla.id}" class="btnQuitar">Quitar del carrito</a>
+            </div>
+        `;
+            // Actualiza el total
+            this.total += zapatilla.precio * zapatilla.cantidad;
+            this.totalZapatillas += zapatilla.cantidad;
+        }
+        const botonesSacar = document.querySelectorAll(".btnQuitar");
+        for (const boton of botonesSacar) {
+            boton.onclick = (event) => {
+                event.preventDefault();
+                this.sacar(Number(boton.dataset.id));
+            };
+        }
+        // actualizo variables del carrito
+        spanCantidadZapatillas.innerText = this.totalZapatillas;
+        spanTotalCarrito.innerText = this.total;
+    }
+}
+
+// molde
+class Prenda {
+    constructor(id, nombre, precio, categoria, imagen = false) {
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.categoria = categoria;
+        this.imagen = imagen;
+    }
+}
+
+// Objeto bd
+const bd = new BaseDeDatos();
+
+// Elementos
+const divZapatillas = document.querySelector("#zapatillas");
+const divCarrito = document.querySelector("#carrito");
+const spanCantidadZapatillas = document.querySelector("#cantidadZapatillas");
+const spanTotalCarrito = document.querySelector("#totalCompra");
+const inputBuscar = document.querySelector("#inputBuscar");
+const botonCarrito = document.querySelector("section h1");
+
+cargarZapatillas(bd.traerRegistros());
+
+// renderiza el HTML
+function cargarZapatillas(zapatillas) {
+    divZapatillas.innerHTML = "";
+    for (const zapatilla of zapatillas) {
+        divZapatillas.innerHTML += `
+        <div class="zapatilla">
+            <h2>${zapatilla.nombre}</h2>
+            <p class="precio">$${zapatilla.precio}</p>
+            <div class="imagen">
+                <img src="img/${zapatilla.imagen}" />
+            </div>
+                <a href="#" class="btnAgregar" data-id="${zapatilla.id}">Agregar al carrito</a>
+        </div>
+    `;
+    }
+    const botonesAgregar = document.querySelectorAll(".btnAgregar");
+    for (const boton of botonesAgregar) {
+        boton.addEventListener("click", (event) => {
+            event.preventDefault();
+            const id = Number(boton.dataset.id);
+            const zapatilla = bd.registroPorId(id);
+            carrito.agregar(zapatilla);
+        });
+    }
+}
+
+//  intento de evento keyup
+inputBuscar.addEventListener("keyup", (event) => {
+    event.preventDefault();
+    const buscan = inputBuscar.value;
+    const zapatilla = bd.registrosPorNombre(buscan.toLowerCase());
+    cargarZapatillas(zapatilla);
+});
+
+// muestra o no el carrito
+botonCarrito.addEventListener("click", (event) => {
+    document.querySelector("section").classList.toggle("ocultar");
+});
+
+// objeto carrito
+const carrito = new Carrito();

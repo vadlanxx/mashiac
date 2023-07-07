@@ -5,7 +5,177 @@
     cursor: pointer;
 }
 
-body{
+body {
+    font-family: "Inter", sans-serif;
+}
+
+main {
+    width: 50%;
+    margin: auto;
+    padding: 2rem;
+
+}
+
+main input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    box-shadow: 0px 0px 14px 0px rgba(11, 134, 67, 0.842);
+    border-radius: 3px;
+    border: 1px solid rgba(9, 102, 55, 0.308);
+    margin-bottom: 1rem;
+}
+
+section {
+    position: fixed;
+    box-shadow: -6px -2px 25px -13px rgba(16, 141, 72, 0.521);
+    width: 320px;
+    height: 100%;
+    top: 0;
+    right: 0;
+    padding: 2rem;
+    transition: all 0.4s;
+    background-color: rgb(95, 124, 112);
+}
+
+section h1 {
+    position: absolute;
+    top: 20px;
+    right: 360px;
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.2);
+    background: url("/img/cart.png") center center no-repeat rgba(17, 116, 83, 0.753);
+}
+section h1 span {
+    display: block;
+    background-color: rgb(35, 206, 140);
+    border-radius: 150px;
+    padding: 5px;
+    width: 30px;
+    text-align: center;
+    font-size: 14px;
+    margin: -10px 0 0 30px;
+}
+section h3 {
+    padding-top: 10px;
+    text-align: center;
+    font-size: 30px;
+}
+.btnAgregar,
+.btnQuitar {
+    color: white;
+    background-color: rgb(7, 105, 73);
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.2);
+    margin: 10px 0;
+    border: 1px solid rgb(2, 63, 40);
+}
+.btnAgregar:hover,
+.btnQuitar:hover {
+    border: 1px solid white;
+}
+.zapatillaCarrito {
+    border-bottom: 2px dashed rgba(0, 0, 0, 0.2);
+    padding: 10px 0;
+    margin-bottom: 10px;
+    line-height: 24px;
+}
+.productoCarrito h2 {
+    margin-bottom: 8px;
+}
+.ocultar {
+    right: -340px;
+    transition: all 0.2s;
+}
+.zapatilla {
+    width: 180px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 1rem;
+    display: inline-block;
+
+}
+.zapatilla .precio {
+    padding: 10px 0;
+    font-size: 20px;
+    background-color: rgb(34, 194, 114);
+    display: inline-block;
+    padding: 4px 10px;
+    color: white;
+    border-radius: 10px;
+    margin-top: 4px;
+}
+.zapatilla .imagen {
+    display: flex;
+    justify-content: center;
+    min-height: 160px;
+    margin: 20px 0;
+}
+.zapatilla .imagen img {
+    max-height: 150px;
+}
+.zapatilla .btnAgregar {
+    margin: auto;
+    display: block;
+    text-align: center;
+}
+.zapatilla:hover {
+    border: 1px solid black;
+    box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/************************ SEGUNDA PRE ENTREGA ********************************
+//************************ SEGUNDA PRE ENTREGA ********************************
+//************************ SEGUNDA PRE ENTREGA ********************************
+//************************ SEGUNDA PRE ENTREGA ********************************
+/* body{
     background-image: url(/img/alamcen.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -69,7 +239,7 @@ h1{
 }
 
 /* me devuelve */
-.ventana{
+/* .ventana{
     width: 30%;
     text-align: center;
     margin-top: 1rem;
@@ -88,7 +258,7 @@ h1{
     
 }
 
-/* EN JS */
+EN JS
 .producto{
     background-color: transparent;
     width: 100px;
@@ -96,4 +266,4 @@ h1{
 .imgg{
     width: 100px;
     background-color: rgb(255, 60, 0);
-}
+}  
