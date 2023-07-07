@@ -67,8 +67,7 @@ if (comando == 'Enviar mensaje') {
 
 //************************ SEGUNDA PRE ENTREGA ********************************
 //************************ SEGUNDA PRE ENTREGA ********************************
-//************************ SEGUNDA PRE ENTREGA ********************************
-//************************ SEGUNDA PRE ENTREGA ********************************
+
 
 // Clase molde para los personajes 
 /*
